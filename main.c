@@ -3,7 +3,6 @@
 
 int lastIndex = 1;
 
-
 void heapifyDown(int arr[]){
     int root = 1;
 
@@ -40,7 +39,6 @@ void heapifyDown(int arr[]){
     }
 }
 
-
 void heapifyUp(int arr[]){
     int last = lastIndex;
     int root = last/2;
@@ -61,7 +59,6 @@ void insert(int arr[],int value){
     heapifyUp(arr);
 }
 
-
 //silme isleminde heapify top-down
 int removeMax(int arr[]){
     int result = arr[1];
@@ -79,8 +76,6 @@ void printArray(int arr[]){
     printf("\n");
 }
 
-
-
 int main() {
 
     int heapArr[Number];
@@ -89,26 +84,16 @@ int main() {
     }
     insert(heapArr,10);
     lastIndex++;
-
-
     insert(heapArr,12);
     lastIndex++;
-
-
-
     insert(heapArr,14);
     lastIndex++;
-
-
     insert(heapArr,8);
     lastIndex++;
-
     insert(heapArr,3);
     lastIndex++;
-
     insert(heapArr,15);
     lastIndex++;
-
     insert(heapArr,20);
 
     printArray(heapArr);
