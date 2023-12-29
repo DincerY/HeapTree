@@ -3,38 +3,24 @@
 
 int lastIndex = 1;
 
-void heapifyDown(int arr[]){
-    int root = 1;
+void swap(int * a, int * b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
 
-    while(arr[root] < arr[root*2] || arr[root] < arr[root*2+1]){
-        int left = root *2;
-        int right = root*2+1;
-        int temp;
-        if(arr[root] < arr[left] && arr[root] > arr[right]){
-            temp = arr[root];
-            arr[root] = arr[left];
-            arr[left] = temp;
-            root = left;
-        }
-        else if(arr[root] < arr[right] && arr[root] > arr[left]){
-            temp = arr[root];
-            arr[root] = arr[right];
-            arr[right] = temp;
-            root = right;
-        }
-        else{
-            if(arr[left] > arr[right]){
-                temp = arr[root];
-                arr[root] = arr[left];
-                arr[left] = temp;
-                root = left;
-            }
-            else{
-                temp = arr[root];
-                arr[root] = arr[right];
-                arr[right] = temp;
-                root = right;
-            }
+void heapifyDown(int arr[]){
+    int currNode = 1;
+
+    while(arr[currNode] < arr[currNode*2] || arr[currNode] < arr[currNode*2+1]){
+        int left = currNode*2;
+        int right = currNode*2+1;
+        if(arr[left] > arr[right]){
+            swap(&arr[currNode],&arr[left]);
+            currNode = left;
+        } else{
+            swap(&arr[currNode],&arr[right]);
+            currNode = right;
         }
     }
 }
@@ -44,10 +30,7 @@ void heapifyUp(int arr[]){
     int root = last/2;
 
     while(arr[root] < arr[last] && root >= 1){
-        int temp = arr[root];
-        arr[root] = arr[last];
-        arr[last] = temp;
-
+        swap(&arr[root],&arr[last]);
         last = root;
         root = last/2;
     }
